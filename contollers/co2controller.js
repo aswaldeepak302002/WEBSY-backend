@@ -1,6 +1,32 @@
 const axios = require('axios');
 const { co2 } = require('@tgwf/co2');
 
+// async function estimateUrlCO2Emission(url) {
+//     try {
+//         const response = await axios.get(url, { responseType: 'stream' });
+//         let totalBytes = 0;
+
+//         response.data.on('data', (chunk) => {
+//             totalBytes += chunk.length;
+//         });
+
+//         return new Promise((resolve, reject) => {
+//             response.data.on('end', () => {
+//                 const co2Emission = new co2();
+//                 const estimatedCO2 = co2Emission.perByte(totalBytes);
+//                 resolve(estimatedCO2.toFixed(3)); // Returns grams of CO2
+//             });
+
+//             response.data.on('error', (err) => {
+//                 reject(err);
+//             });
+//         });
+//     } catch (error) {
+//         console.error("Failed to fetch URL for CO2 estimation:", error);
+//         throw error;
+//     }
+// }
+
 async function estimateUrlCO2Emission(url) {
     try {
         const response = await axios.get(url, { responseType: 'stream' });
